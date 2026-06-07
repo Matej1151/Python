@@ -1,28 +1,32 @@
-import random
+class Cat:
+    def __init__(self, weight, age, name, colour):
+        self._name = name
+        self._weight = weight
+        self._age = age
+        self._colour = colour
 
-count = 1000
-def qsort(_data):
-    if len(_data) <=1:
-        return data
+    def info(self):
+        print(
+            f"Meno: {self._name},"
+            f"Vaha: {self._weight}, "
+            f"Vek: {self._age}, "
+            f"Farba: {self._colour}"
+        )
+
+class Cat(Animal):
+    def __init__(self, name, weight, age, colour, lives=9):
+        super().__init__(name, weight, age, colour)
+        self._lives = lives
+
+    def info(self):
+        super().info()
+        print(f"Zivoty: {self._lives}")
+
+class Dog(Animal):
+    def __init__(self, name, weight, age, colour, breed):
+    super().__init__(name, weight, age, colour)
+    self._breed = breed
+
+cat = Cat("Jonas", 10, 5, "cierna", 4)
+cat.info()
     
-    print(len(_data))
-
-    pivot = _data[len(_data)//2]
-    smaller = [x for x in _data if x < pivot]
-    bigger = [x for x in _data if x > pivot]
-    same = [x for x in _data if x == pivot]
-
-    return qsort(smaller) + same + qsort(bigger)
-
-
-
-
-data = [random.randint(0, 99) for _ in range(count)]
-
-data = qsort(data)
-
-data.sort()
-
-print(data)
-data = data[80:]
-data = data[:len(data)-80]
