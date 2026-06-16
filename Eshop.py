@@ -1,6 +1,9 @@
 import customtkinter as ctk
 from PIL import Image
 
+items=0
+price=0
+price2=price/1.2
 
 root = ctk.CTk()
 root.title("The bean society")
@@ -9,57 +12,27 @@ root.iconbitmap(r"C:\Users\Matej Grochal\Downloads\favicon.ico")
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 
-obrazok = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\tapeta.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\tapeta.jpg"), 
-    size=(1920, 1080)
-)
-
-etiopia = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\etiopia.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\etiopia.jpg"), 
-    size=(300, 300)
-)
-
-kolumbia = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\kolumbia.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\kolumbia.jpg"), 
-    size=(300, 300)
-)
-
-kostarika = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\kostarika.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\kostarika.jpg"), 
-    size=(300, 300)
-)
-
-origin = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\origin.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\origin.jpg"), 
-    size=(300, 300)
-)
-
-desighn = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\desighn.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\desighn.jpg"), 
-    size=(300, 300)
-)
-
-flavor = ctk.CTkImage(
-    dark_image=Image.open(r"C:\Users\Matej Grochal\Downloads\flavor.jpg"),
-    light_image=Image.open(r"C:\Users\Matej Grochal\Downloads\flavor.jpg"), 
-    size=(300, 300)
-)
-
-
-
-
-
+folder = r"C:\Users\Matej Grochal\Downloads"
+obrazok = ctk.CTkImage(dark_image=Image.open(f"{folder}\\tapeta.jpg"),size=(1920, 1080))
+obrazok2 = ctk.CTkImage(dark_image=Image.open(f"{folder}\\tapeta2.jpg"),size=(1920, 1080))
+obrazok3 = ctk.CTkImage(dark_image=Image.open(f"{folder}\\tapeta3.jpg"),size=(1920, 1080))
+obrazok4 = ctk.CTkImage(dark_image=Image.open(f"{folder}\\tapeta4.jpg"),size=(1920, 1080))
+etiopia = ctk.CTkImage(dark_image=Image.open(f"{folder}\\etiopia.jpg"), size=(300, 300))
+kolumbia = ctk.CTkImage(dark_image=Image.open(f"{folder}\\kolumbia.jpg"),size=(300, 300))
+kostarika = ctk.CTkImage(dark_image=Image.open(f"{folder}\\kostarika.jpg"),size=(300, 300))
+origin = ctk.CTkImage(dark_image=Image.open(f"{folder}\\origin.jpg"),size=(300, 300))
+desighn = ctk.CTkImage(dark_image=Image.open(f"{folder}\\desighn.jpg"),size=(300, 300))
+flavor = ctk.CTkImage(dark_image=Image.open(f"{folder}\\flavor.jpg"),size=(300, 300))
+info = ctk.CTkImage(dark_image=Image.open(f"{folder}\\info.jpg"),size=(50, 50))
+home = ctk.CTkImage(dark_image=Image.open(f"{folder}\\home.jpg"),size=(50, 50))
+cart = ctk.CTkImage(dark_image=Image.open(f"{folder}\\cart.jpg"),size=(50, 50))
+kavovar = ctk.CTkImage(dark_image=Image.open(f"{folder}\\kavovar.jpg"),size=(300, 300))
 
 tapeta = ctk.CTkLabel(root, image=obrazok, text="")
 tapeta.grid(row=0, column=0, sticky="nsew")
 
-def strana_coffe():
+def strana_coffe():  
+    tapeta.configure(image=obrazok)
     cat1.configure(fg_color="#9D6C34")
     cat2.configure(fg_color="#222222")
     cat3.configure(fg_color="#222222")
@@ -75,15 +48,21 @@ def strana_coffe():
     txt1.place_configure(y=650)
     txt2.place_configure(y=650)
     txt3.place_configure(y=650)
-
-
-
-
-
-
-
-
-def strana_books():
+    cat1.place_configure(x=210, y=173)
+    cat2.place_configure(x=730, y=173)
+    cat3.place_configure(x=1280, y=173)
+    buy1.place_configure(x=375, y=700)
+    buy2.place_configure(x=870, y=700)
+    buy3.place_configure(x=1370, y=700)
+    buy1.configure(text="10.99€", command=lambda: item(10.99))
+    buy2.configure(text="9.99€", command=lambda: item(9.99))
+    buy3.configure(text="12.99€", command=lambda: item(12.99))
+    crt.place_forget()
+    kvr.place_forget()
+    btn_vymaz.place_forget()
+    
+def strana_books():   
+    tapeta.configure(image=obrazok)   
     cat1.configure(fg_color="#222222")
     cat2.configure(fg_color="#9D6C34")
     cat3.configure(fg_color="#222222")
@@ -96,36 +75,105 @@ def strana_books():
     txt1.place_configure(y=630)
     txt2.place_configure(y=630)
     txt3.place_configure(y=630)
-
-
+    buy1.place_configure(x=375, y=700)
+    buy2.place_configure(x=870, y=700)
+    buy3.place_configure(x=1370, y=700)
+    buy1.configure(text="25.99€", command=lambda: item(25.99))
+    buy2.configure(text="25.99€", command=lambda: item(25.99))
+    buy3.configure(text="25.99€", command=lambda: item(25.99))
+    crt.place_forget()
+    kvr.place_forget()
+    btn_vymaz.place_forget()
 
 def strana_coffee_machines():
+    tapeta.configure(image=obrazok4)
     cat1.configure(fg_color="#222222")
     cat2.configure(fg_color="#222222")
     cat3.configure(fg_color="#9D6C34")
-    txt1.configure(text="Coffe machine1")
-    txt2.configure(text="Coffe machine2")
-    txt3.configure(text="Coffe machine3")
+    txt1.configure(text="")
+    txt2.configure(text="Precision in every cup.")
+    txt3.configure(text="")
     kv1.configure(image="")
     kv2.configure(image="")
     kv3.configure(image="")
     knh1.configure(image="")
     knh2.configure(image="")
     knh3.configure(image="")
-    
+    buy1.place_forget()
+    buy2.configure(text="120.99€", command=lambda: item(120.99))
+    buy3.place_forget()
+    kvr.place(x=865, y=330)
+    crt.place_forget()
+    btn_vymaz.place_forget()
 
+def strana_info():
+    tapeta.configure(image=obrazok2)
+    kv1.configure(image="")
+    kv2.configure(image="")
+    kv3.configure(image="")
+    knh1.configure(image="")
+    knh2.configure(image="")
+    knh3.configure(image="")
+    txt1.configure(text="")
+    txt2.configure(text="")
+    txt3.configure(text="")
+    cat1.place_forget()
+    cat2.place_forget()
+    cat3.place_forget()
+    buy1.place_forget()
+    buy2.place_forget()
+    buy3.place_forget()
+    crt.place_forget()
+    kvr.place_forget()
+    btn_vymaz.place_forget()
 
+def strana_cart():
+    tapeta.configure(image=obrazok3)
+    kv1.configure(image="")
+    kv2.configure(image="")
+    kv3.configure(image="")
+    knh1.configure(image="")
+    knh2.configure(image="")
+    knh3.configure(image="")
+    txt1.configure(text="")
+    txt2.configure(text="")
+    txt3.configure(text="")
+    cat1.place_forget()
+    cat2.place_forget()
+    cat3.place_forget()
+    buy1.place_forget()
+    buy2.place_forget()
+    buy3.place_forget()
+    crt.configure(text=f"Number of items: {items}\n\nTotal price without DPH: {round(price2, 2)}€\n\nTotal price: {round(price, 2)}€")
+    crt.place_configure(x=805, y=450)
+    kvr.place_forget()
+    crt.configure(text=f"Number of items: {items}\n\nTotal price without DPH: {round(price2, 2)}€\n\nTotal price: {round(price, 2)}€")
+    crt.place_configure(x=805, y=450)
+    kvr.place_forget()
+    btn_vymaz.place(x=870, y=650)
 
+def item(hodnota):
+    global items, price, price2
+    items+=1
+    price+=(hodnota)
+    price2=price/1.2
+    crt.configure(text=f"Number of items: {items}\n\nTotal price without DPH: {round(price2, 2)}€\n\nTotal price: {round(price, 2)}€")
 
+def vyprázdni_košík():
+    global items, price, price2
+    items = 0
+    price = 0
+    price2 = 0
+    crt.configure(text=f"Number of items: {items}\n\nTotal price without DPH: {round(price2, 2)}€\n\nTotal price: {round(price, 2)}€")
 
+btn_vymaz = ctk.CTkButton(root, text="Clear Cart", font=("Segoe UI Black", 20), fg_color="#9D6C34", text_color="white", hover_color="#990000", width=300, height=50, corner_radius=30, command=vyprázdni_košík)
 
-buy1 = ctk.CTkButton(root, text="ADD TO CART",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30)
+buy1 = ctk.CTkButton(root, text="10.99€",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30, command=lambda: item(10.99) )
 buy1.place(x=375, y=700)
-buy2 = ctk.CTkButton(root, text="ADD TO CART",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30)
+buy2 = ctk.CTkButton(root, text="9.99€",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30, command=lambda: item(9.99) )
 buy2.place(x=870, y=700)
-buy3 = ctk.CTkButton(root, text="ADD TO CART",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30)
+buy3 = ctk.CTkButton(root, text="12.99€",font=("Segoe UI Black", 20),fg_color="#DD831C",text_color="#532F07", hover_color="#362512", width=300, height=50, corner_radius=30, command=lambda: item(12.99) )
 buy3.place(x=1370, y=700)
-
 
 kv1 = ctk.CTkLabel(root, image="", text="")
 kv1.place(x=375, y=330)
@@ -141,7 +189,8 @@ knh2.place(x=865, y=330)
 knh3 = ctk.CTkLabel(root, image="", text="")
 knh3.place(x=1365, y=330)
 
-
+kvr = ctk.CTkLabel(root, image=kavovar, text="")
+kvr.place(x=865, y=330)
 
 txt1 = ctk.CTkLabel(root, text="", font=("Century Gothic", 24), text_color="#949494", fg_color="#222222")
 txt1.place(x=375, y=650)
@@ -150,9 +199,6 @@ txt2.place(x=845, y=650)
 txt3 = ctk.CTkLabel(root, text="", font=("Century Gothic", 24), text_color="#949494", fg_color="#222222")
 txt3.place(x=1350, y=650)
 
-
-
-
 cat1 = ctk.CTkButton(root, text="Coffee",font=("Century Gothic", 30),fg_color="#222222",text_color="#949494", hover=False, width=500, height=80, corner_radius=30, command=strana_coffe)
 cat1.place(x=210, y=173)
 cat2 = ctk.CTkButton(root, text="Books",font=("Century Gothic", 30),fg_color="#222222",text_color="#949494", hover=False, width=500, height=80, corner_radius=30, command=strana_books)
@@ -160,12 +206,15 @@ cat2.place(x=730, y=173)
 cat3 = ctk.CTkButton(root, text="Coffee machines",font=("Century Gothic", 30),fg_color="#222222",text_color="#949494", hover=False, width=500, height=80, corner_radius=30, command=strana_coffee_machines)
 cat3.place(x=1280, y=173)
 
+pnl1 = ctk.CTkButton(root, image=info, text="", fg_color="#222222", width= 15, hover=False, command=strana_info)
+pnl1.place(x=35, y=405)
+pnl2 = ctk.CTkButton(root, image=home, text="", fg_color="#222222", width= 15, hover=False, command=strana_coffe)
+pnl2.place(x=35, y=555)
+pnl3 = ctk.CTkButton(root, image=cart, text="", fg_color="#222222", width= 15, hover=False, command=strana_cart)
+pnl3.place(x=30, y=710)
 
+crt = ctk.CTkLabel(root, text=f"", font=("Century Gothic", 30), text_color="#949494", fg_color="#222222")
+crt.place(x=805, y=450)
 
-
-
-
-
-
-
+strana_coffe()
 root.mainloop()
